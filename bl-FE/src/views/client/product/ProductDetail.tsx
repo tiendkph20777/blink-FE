@@ -320,8 +320,9 @@ const ProductDetail = () => {
                   </li>
                   <hr />
                   <li>
-                    <i>{prodetailData?.description}</i>
-                  </li>
+                    <div dangerouslySetInnerHTML={{ __html: prodetailData?.description }} />
+                    {/* <i>{ prodetailData?.description}</i> */}
+                </li>
                 </ul>
 
                 <div className="product-blocks-details product-blocks-443 grid-rows">

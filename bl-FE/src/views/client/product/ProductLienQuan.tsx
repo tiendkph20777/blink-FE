@@ -57,7 +57,7 @@ const ProductLienQuan = () => {
             </div>
           </div>
           <Slider
-            // dots={true} // Hiển thị dấu chấm chỉ định trang hiện tại
+            dots={true} // Hiển thị dấu chấm chỉ định trang hiện tại
             infinite={true} // Lặp vô tận qua các ảnh
             speed={300} // Tốc độ chuyển đổi (milliseconds)
             slidesToShow={5} // Số ảnh được hiển thị cùng một lúc

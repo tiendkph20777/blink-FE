@@ -10,7 +10,7 @@ const RelatedInformation = () => {
             <div>
                 <h3>Mô tả sản phẩm</h3>
                 <p className="description-product">
-                    {prodetailData?.content}
+                    <div dangerouslySetInnerHTML={{ __html: prodetailData?.content }} />
                 </p>
             </div>
             {/* <div>

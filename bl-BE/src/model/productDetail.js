@@ -13,6 +13,10 @@ const productDetailSchema = new mongoose.Schema({
         type: Number,
         require: true,
     },
+    price_var: {
+        type: Number,
+        require: true,
+    },
 },
     {
         timestamps: true,

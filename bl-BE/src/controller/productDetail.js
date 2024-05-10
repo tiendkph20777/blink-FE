@@ -62,14 +62,14 @@ export const createProductDetail = async (req, res) => {
                 message: error.details.map((err) => err.message)
             });
         }
-        const { size, quantity, product_id } = req.body;
-        const existingProductDetail = await ProductDetail.findOne({ product_id, size, quantity });
+        const { size, quantity, product_id,price_var } = req.body;
+        const existingProductDetail = await ProductDetail.findOne({ product_id, size, quantity,price_var });
         if (existingProductDetail) {
             return res.status(400).json({
                 message: "Thông tin đã tồn tại"
             });
         }
-        const productDetail = await ProductDetail.create({ product_id, size, quantity });
+        const productDetail = await ProductDetail.create({ product_id, size, quantity,price_var });
         return res.status(201).json(productDetail);
     } catch (error) {
         return res.status(400).json({
