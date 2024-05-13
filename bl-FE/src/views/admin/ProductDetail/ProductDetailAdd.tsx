@@ -78,7 +78,7 @@ const ProductAdd = () => {
               >
                 <div className="mb-3">
                   <label htmlFor="productName" className="form-label">
-                    Tên
+                    Tên sản phẩm
                   </label>
                   <select
                     className="form-select"

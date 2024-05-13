@@ -93,7 +93,7 @@ const CheckOut = () => {
                 price: price,
                 price_sale: price_sale,
                 quantity: quantity,
-                total: price * quantity,
+                total: item.price_var * quantity,
                 status: status,
                 cart_id: cart_id,
               };
@@ -752,25 +752,12 @@ const CheckOut = () => {
                       <td style={{ width: "100px", textAlign: "center" }}>
                         <h5>{item?.size}</h5>
                       </td>
-                      {/* <td style={{ width: "100px" }}>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <button
-                            style={{
-                              backgroundColor: item?.color,
-                              width: "20px",
-                              height: "20px",
-                              margin: "5px",
-                            }}
-                          ></button>
-                          <h5>{item?.color}</h5>
-                        </div>
-                      </td> */}
                       <td style={{ width: "100px", textAlign: "center" }}>
                         <h5>{item?.quantity}</h5>
                       </td>
                       <td style={{ width: "100px" }}>
                         <h5>
-                          {item?.price?.toLocaleString("vi-VN", {
+                          {item?.price_var?.toLocaleString("vi-VN", {
                             style: "currency",
                             currency: "VND",
                           })}

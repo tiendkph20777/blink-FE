@@ -17,13 +17,6 @@ const ProductAdd: React.FC = () => {
     formState: { errors },
   } = useForm<IProducts>();
 
-  // const [editorData, setEditorData] = useState('');
-
-  // const handleEditorChange = (event, editor) => {
-  //   const data = editor.getData();
-  //   setEditorData(data);
-  // }
-
   const [fileList, setFileList] = useState<any[]>([]);
   const [addProduct] = useAddProductMutation();
   const { data: categories } = useGetBrandsQuery();
@@ -159,7 +152,7 @@ const ProductAdd: React.FC = () => {
                     <div className="invalid-feedback">Không được bỏ trống!</div>
                   )}
                 </div>
-                <div className="mb-3 col-md-6 col-sm-12">
+                {/* <div className="mb-3 col-md-6 col-sm-12">
                   <label htmlFor="productPrice" className="form-label">
                     Giá bán
                   </label>
@@ -202,7 +195,7 @@ const ProductAdd: React.FC = () => {
                   {errors.price_sale && (
                     <div className="invalid-feedback">{errors.price_sale.message}</div>
                   )}
-                </div>
+                </div> */}
                 <div className="mb-3">
                   <label htmlFor="productImage" className="form-label">
                     Ảnh sản phẩm
@@ -221,7 +214,7 @@ const ProductAdd: React.FC = () => {
 
                 <div className="mb-3">
                   <label htmlFor="productDescription" className="form-label">
-                    Mô tả sản phẩm
+                    Mô tả ngắn
                   </label>
                   <CKEditor
                     editor={ClassicEditor}

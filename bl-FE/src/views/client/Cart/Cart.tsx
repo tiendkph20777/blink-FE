@@ -26,7 +26,6 @@ const Cart = () => {
   const { data: Product } = useGetProductsQuery();
   const [removeCartDetailMutation] = useRemoveCartDetailMutation();
   const [updateCartDetailMutation] = useUpdateCartDetailMutation();
-  // const [cartDetailCheckbot, setCartDetailCheckbot] = useState([]);
   const { data: productDetail } = useGetProductDetailQuery();
   const [productQuantities, setProductQuantities] = useState({});
 
@@ -40,9 +39,9 @@ const Cart = () => {
     }
   }, [ProductDetailUser]);
   useEffect(() => {
-    console.log("All product quantities:", productQuantities);
+    // console.log("All product quantities:", productQuantities);
   }, [productQuantities]);
-  console.log("productQuantities:", productQuantities);
+  // console.log("productQuantities:", productQuantities);
 
   const getQuantityInStock = (productDetailId) => {
     return productQuantities[productDetailId] || 0;
@@ -54,8 +53,9 @@ const Cart = () => {
   const productsWithTrueStatus = cartDetail.filter(
     (product: any) => product.status === true
   );
+
   const totalCost = productsWithTrueStatus?.reduce(
-    (acc, product: any) => acc + product.quantity * product.price,
+    (acc, product: any) => acc + product.quantity * product.price_var,
     0
   );
   //
@@ -64,6 +64,7 @@ const Cart = () => {
       const cartDetailIds = cartUser?.products.map(
         (item: any) => item.productDetailId
       );
+
       const matchingIds = cartDetailIds?.filter((id: any) =>
         ProductDetailUser.some((product) => product._id === id)
       );
@@ -79,6 +80,8 @@ const Cart = () => {
 
       const modifiedProductDetails = matchingProductDetailUser?.map(
         (item: any) => {
+          console.log(item.price_var)
+
           const matchingProduct = filteredProducts?.find(
             (product) => product._id === item.product_id
           );
@@ -107,9 +110,10 @@ const Cart = () => {
               name: matchingProduct.name,
               image: matchingProduct.images[0],
               price: price,
+              price_var: item.price_var,
               price_sale: price_sale,
               quantity: quantity,
-              total: price * quantity,
+              total: item.price_var * quantity,
               idCartDetail: idCartDetail,
               status: status,
               cart_id: cart_id,
@@ -219,6 +223,7 @@ const Cart = () => {
       setValue("product_id", editingProduct.product_id);
       setValue("quantity", editingProduct.quantity);
       setValue("size", editingProduct.size);
+      setValue("price_var", editingProduct.price_var);
       setValue("total", editingProduct.total);
       setValue("status", editingProduct.status);
     }
@@ -382,28 +387,13 @@ const Cart = () => {
                       <td>
                         <h5>{item?.size}</h5>
                       </td>
-                      {/* <td>
-                        <div style={{ display: "flex", alignItems: "center" }}>
-                          <div style={{ display: "flex" }}>
-                            <button
-                              style={{
-                                backgroundColor: item?.color,
-                                width: "20px",
-                                height: "20px",
-                                marginRight: "5px",
-                              }}
-                            ></button>
-                          </div>
-                        </div>
-                            <h5>{item?.color}</h5>
-                      </td> */}
                       <td>
                         <h5>{item.quantity}</h5>
                       </td>
 
                       <td>
                         <h5>
-                          {item.price?.toLocaleString("vi-VN", {
+                          {item.price_var?.toLocaleString("vi-VN", {
                             style: "currency",
                             currency: "VND",
                           })}

@@ -6,7 +6,6 @@ import {
 } from "../../../services/product.service";
 import { useGetBrandsQuery } from "../../../services/brand.service";
 import {
-  useGetAllProductsDetailQuery,
   useGetAllsProductsDetailQuery,
 } from "../../../services/productDetail.service";
 import Slider from "react-slick";
@@ -46,8 +45,28 @@ const ProductDetail = () => {
   )?.name;
   const { data: productDataDetail, isLoading } = useGetAllsProductsDetailQuery(_id);
 
-// console.log(productDataDetail);
+  console.log(productDataDetail);
 
+  let maxPriceVar;
+  let minPriceVar;
+  if (productDataDetail && productDataDetail.length > 0) {
+    const validPriceVars = productDataDetail.map((item:any) => item.price_var).filter((priceVar:any) => typeof priceVar === 'number' && !isNaN(priceVar));
+  
+    if (validPriceVars.length > 0) {
+      maxPriceVar = Math.max(...validPriceVars);
+  
+      minPriceVar = Math.min(...validPriceVars);
+  
+    } else {
+      console.log("Không có giá trị price_var hợp lệ.");
+    }
+  } else {
+    console.log("Không có dữ liệu sản phẩm.");
+  }
+  // console.log("Giá trị price_var lớn nhất:", maxPriceVar);
+  // console.log("Giá trị price_var bé nhất:", minPriceVar);
+
+  
   const [productSizes, setProductSizes] = useState([]);
   useEffect(() => {
     if (productDataDetail) {
@@ -74,6 +93,7 @@ const ProductDetail = () => {
   const [isErrorVisible, setIsErrorVisible] = useState(false);
 
   const [productdeID, setproductdeID] = useState();
+  const [productdeprice, setproductdeprice] = useState();
   
   useEffect(() => {
     if (selectedSize && productDataDetail) {
@@ -85,12 +105,13 @@ const ProductDetail = () => {
       // Lặp qua từng phần tử và log id của chúng
       productsWithSelectedSize.forEach((product: any) => {
         setproductdeID(product._id)
-        console.log("ID của sản phẩm có size", selectedSize, " là:", product._id);
+        setproductdeprice(product.price_var)
+        console.log("ID của sản phẩm có size", selectedSize, " là:", product);
       });
     }
   }, [selectedSize, productDataDetail]);
   
-  console.log(productdeID);
+  console.log(productdeprice);
 
   useEffect(() => {
     if (selectedSize) {
@@ -285,7 +306,8 @@ const ProductDetail = () => {
             <div className="col-lg-5 offset-lg-1">
               <div className="s_product_text">
                 <h3>{prodetailData?.name}</h3>
-                {prodetailData?.price_sale > 0 ? (
+                
+                {/* {prodetailData?.price_sale > 0 ? (
                   <div className="product-price row">
                     <strong className="col-12">
                       {prodetailData?.price_sale?.toLocaleString("vi-VN", {
@@ -311,7 +333,26 @@ const ProductDetail = () => {
                       })}
                     </strong>
                   </div>
-                )}
+                )} */}
+                <div>
+                  {productdeprice ? (
+                    <div className="product-price row pb-2">
+                      <strong className="col-12">
+                        {productdeprice?.toLocaleString("vi-VN", {
+                          style: "currency",
+                          currency: "VND",
+                        })}
+                      </strong>
+                    </div>
+                  ) : (
+                    <p></p>
+                  )}
+                </div>
+                <strong style={{color:"red" , fontSize:'16px'}}>
+                  {minPriceVar?.toLocaleString("vi-VN", {style: "currency", currency: "VND",})} 
+                  - 
+                  {maxPriceVar?.toLocaleString("vi-VN", {style: "currency", currency: "VND", })}
+                </strong>
                 <ul className="list">
                   <li>
                     <a className="active" href="#">
@@ -321,7 +362,6 @@ const ProductDetail = () => {
                   <hr />
                   <li>
                     <div dangerouslySetInnerHTML={{ __html: prodetailData?.description }} />
-                    {/* <i>{ prodetailData?.description}</i> */}
                 </li>
                 </ul>
 

@@ -7,11 +7,11 @@ const productSchema = new mongoose.Schema({
     },
     sku: { type: String, default: "" },
     images: { type: Array, required: true },
-    price: {
-        type: Number,
-        required: true
-    },
-    price_sale: Number,
+    // price: {
+    //     type: Number,
+    //     required: true
+    // },
+    // price_sale: Number,
     brand_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Brand",

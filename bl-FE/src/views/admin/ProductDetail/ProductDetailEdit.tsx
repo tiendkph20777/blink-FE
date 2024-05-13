@@ -103,7 +103,7 @@ const ProductProductEdit = () => {
                   <Input disabled />
                 </Form.Item>
                 <Form.Item label="Tên sản Phẩm" name="product_id">
-                  <Select  placeholder="Chọn Sản Phẩm">
+                  <Select  placeholder="Chọn Sản Phẩm" disabled>
                     {productsData &&
                       productsData?.map((product) => (
                         <Option key={product._id} value={product._id}>

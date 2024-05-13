@@ -173,7 +173,7 @@ const ProductEdit: React.FC = () => {
                   />
                 </div>
 
-                <div className="form-group col-md-6 col-sm-12">
+                {/* <div className="form-group col-md-6 col-sm-12">
                   <label>Giá niêm yết</label>
                   <input
                     {...register("price", { required: true })}
@@ -189,7 +189,7 @@ const ProductEdit: React.FC = () => {
                     type="number"
                     className={`form-control`}
                   />
-                </div>
+                </div> */}
                 <div className="form-group">
                   <label>Ảnh</label>
                   <Upload
@@ -212,7 +212,7 @@ const ProductEdit: React.FC = () => {
                   </Upload>
                 </div>
                 <div className="App">
-                  <label>Mô tả sản phẩm</label>
+                  <label>Mô tả ngắn</label>
                   <CKEditor
                     editor={ClassicEditor}
                     data={description1} // Sử dụng giá trị của state "description"
