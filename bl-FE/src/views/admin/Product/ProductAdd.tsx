@@ -225,9 +225,6 @@ const ProductAdd: React.FC = () => {
                   </label>
                   <CKEditor
                     editor={ClassicEditor}
-                    config={{
-                      height: 300px // Chiều cao tùy chỉnh
-                    }}
                     onChange={(event, editor) => {
                       const data = editor.getData();
                       register('description', { required: true, value: data });
