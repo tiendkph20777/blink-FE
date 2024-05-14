@@ -172,8 +172,7 @@ const ProductEdit: React.FC = () => {
                     )}
                   />
                 </div>
-
-                {/* <div className="form-group col-md-6 col-sm-12">
+                <div className="form-group col-md-6 col-sm-12">
                   <label>Giá niêm yết</label>
                   <input
                     {...register("price", { required: true })}
@@ -189,7 +188,7 @@ const ProductEdit: React.FC = () => {
                     type="number"
                     className={`form-control`}
                   />
-                </div> */}
+                </div>
                 <div className="form-group">
                   <label>Ảnh</label>
                   <Upload

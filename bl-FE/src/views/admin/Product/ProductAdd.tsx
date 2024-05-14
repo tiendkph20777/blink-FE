@@ -152,7 +152,7 @@ const ProductAdd: React.FC = () => {
                     <div className="invalid-feedback">Không được bỏ trống!</div>
                   )}
                 </div>
-                {/* <div className="mb-3 col-md-6 col-sm-12">
+                <div className="mb-3 col-md-6 col-sm-12">
                   <label htmlFor="productPrice" className="form-label">
                     Giá bán
                   </label>
@@ -195,7 +195,7 @@ const ProductAdd: React.FC = () => {
                   {errors.price_sale && (
                     <div className="invalid-feedback">{errors.price_sale.message}</div>
                   )}
-                </div> */}
+                </div>
                 <div className="mb-3">
                   <label htmlFor="productImage" className="form-label">
                     Ảnh sản phẩm

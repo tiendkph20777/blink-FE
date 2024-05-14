@@ -188,33 +188,33 @@ const ProductView = () => {
         />
       ),
     },
-    // {
-    //   title: "Giá bán",
-    //   dataIndex: "price",
-    //   key: "price",
-    //   render: (text, record) => (
-    //     <span>
-    //       {record.price?.toLocaleString("vi-VN", {
-    //         style: "currency",
-    //         currency: "VND",
-    //       })}
-    //     </span>
-    //   ),
-    // },
+    {
+      title: "Giá bán",
+      dataIndex: "price",
+      key: "price",
+      render: (text, record) => (
+        <span>
+          {record.price?.toLocaleString("vi-VN", {
+            style: "currency",
+            currency: "VND",
+          })}
+        </span>
+      ),
+    },
 
-    // {
-    //   title: "Giá bán sau giảm giá",
-    //   dataIndex: "price_sale",
-    //   key: "price_sale",
-    //   render: (text, record) => (
-    //     <span>
-    //       {record.price_sale?.toLocaleString("vi-VN", {
-    //         style: "currency",
-    //         currency: "VND",
-    //       })}
-    //     </span>
-    //   ),
-    // },
+    {
+      title: "Giá bán sau giảm giá",
+      dataIndex: "price_sale",
+      key: "price_sale",
+      render: (text, record) => (
+        <span>
+          {record.price_sale?.toLocaleString("vi-VN", {
+            style: "currency",
+            currency: "VND",
+          })}
+        </span>
+      ),
+    },
     {
       title: 'Mô tả ngắn',
       dataIndex: 'description',

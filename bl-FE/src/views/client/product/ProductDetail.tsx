@@ -470,7 +470,7 @@ const ProductDetail = () => {
           </TabPane>
         </Tabs>
         <ProductLienQuan />
-        <ProductSale />
+        {/* <ProductSale /> */}
       </div>
       <div></div>
     </div>
