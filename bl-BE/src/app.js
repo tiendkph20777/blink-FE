@@ -42,7 +42,7 @@ mongoose.connect("mongodb+srv://laxus:IxnIvFuEVLsMlBhv@cluster0.yfuqvhg.mongodb.
     useUnifiedTopology: true,
 });
 
-// mongoose.connect("mongodb://127.0.0.1:27017/DATN", {
+// mongoose.connect("mongodb://127.0.0.1:27017/datn", {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
 // });

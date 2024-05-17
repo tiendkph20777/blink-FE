@@ -53,6 +53,7 @@ const Signup = () => {
     const submitSignup = async (formData: IAuth) => {
         try {
             const response = await createUserSignup({ ...formData, image });
+            // console.log(formData)
             if (response.error) {
                 console.log(response.error.data.message);
                 messageApi.open({
